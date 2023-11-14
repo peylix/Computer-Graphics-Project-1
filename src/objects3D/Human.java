@@ -320,9 +320,9 @@ public class Human {
 					glPushMatrix();
 					{
 						glTranslatef(0.0f, 0.0f, 0.0f);
-						glRotatef(0.0f, 0.0f, 0.0f, 0.0f);
+						glRotatef(20.0f, 0.0f, 0.0f, 0.0f);
 
-						glRotatef((-LimbRotation / 2) + 90, 1.0f, 0.0f, 0.0f);
+						glRotatef((-LimbRotation / 2) + 70, 1.0f, 0.0f, 0.0f);
 						// glRotatef(90.0f,1.0f,0.0f,0.0f);
 						cylinder.drawCylinder(0.15f, 0.7f, 32);
 
@@ -395,9 +395,9 @@ public class Human {
 					glPushMatrix();
 					{
 						glTranslatef(0.0f, 0.0f, 0.0f);
-						glRotatef(0.0f, 0.0f, 0.0f, 0.0f);
+						glRotatef(20.0f, 0.0f, 0.0f, 0.0f);
 
-						glRotatef((LimbRotation / 2) + 90, 1.0f, 0.0f, 0.0f);
+						glRotatef((LimbRotation / 2) + 70, 1.0f, 0.0f, 0.0f);
 						// glRotatef(90.0f,1.0f,0.0f,0.0f);
 						cylinder.drawCylinder(0.15f, 0.7f, 32);
 
