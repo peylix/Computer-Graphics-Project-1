@@ -410,7 +410,7 @@ public class MainWindow {
 
 		glPushMatrix();
 		Human MyHuman = new Human();
-		glTranslatef(300, 400, 0);
+		glTranslatef(285, 385, 0);
 		glScalef(90f, 90f, 90f);
 
 		if (!BadAnimation) {

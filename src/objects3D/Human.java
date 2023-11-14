@@ -332,7 +332,9 @@ public class Human {
 						glPushMatrix();
 						{
 							glTranslatef(0.0f, 0.0f, 0.75f);
-							glRotatef(0.0f, 0.0f, 0.0f, 0.0f);
+							glRotatef(120.0f, 0.0f, 0.0f, 0.0f);
+							glRotatef((-LimbRotation / 2) - 150, 1.0f, 0.0f, 0.0f);
+
 							sphere.drawSphere(0.25f, 32, 32);
 
 							// left low leg
@@ -341,7 +343,7 @@ public class Human {
 							glPushMatrix();
 							{
 								glTranslatef(0.0f, 0.0f, 0.0f);
-//								glRotatef(120.0f,1.0f,0.0f,0.0f);
+//								glRotatef(50.0f,1.0f,0.0f,0.0f);
 //								glRotatef(0.0f,0.0f,0.0f,0.0f);
 								cylinder.drawCylinder(0.15f, 0.7f, 32);
 
@@ -405,7 +407,9 @@ public class Human {
 						glPushMatrix();
 						{
 							glTranslatef(0.0f, 0.0f, 0.75f);
-							glRotatef(0.0f, 0.0f, 0.0f, 0.0f);
+							glRotatef(120.0f, 0.0f, 0.0f, 0.0f);
+							glRotatef((LimbRotation / 2) - 150, 1.0f, 0.0f, 0.0f);
+
 							sphere.drawSphere(0.25f, 32, 32);
 
 							// right low leg
