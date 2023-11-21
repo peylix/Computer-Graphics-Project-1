@@ -407,10 +407,18 @@ public class MainWindow {
 //		glColor3f(white[0], white[1], white[2]);
 
 
+		glPushMatrix();
+		Grid grid = new Grid();
+		glTranslatef(285, 210, 0);
+		glScalef(90f, 90f, 90f);
+		grid.DrawGrid();
+		glPopMatrix();
+
 
 		glPushMatrix();
-		Human MyHuman = new Human();
-		glTranslatef(285, 385, 0);
+//		Human MyHuman = new Human();
+		Cyberman myCyberman = new Cyberman();
+		glTranslatef(285, 380, 0);
 		glScalef(90f, 90f, 90f);
 
 		if (!BadAnimation) {
@@ -424,7 +432,7 @@ public class MainWindow {
 			glTranslatef(posn_x * 3.0f, 0.0f, posn_y * 3.0f);
 		}
 
-		MyHuman.drawHuman(delta, !BadAnimation, texturesHuman); // give a delta for the Human object ot be animated
+		myCyberman.drawCyberman(delta, !BadAnimation, texturesHuman); // give a delta for the Human object ot be animated
 
 		glPopMatrix();
 
@@ -480,11 +488,14 @@ public class MainWindow {
 		texturesHuman[0] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture2.png"));
 		System.out.println("TextureHuman0 loaded okay ");
 
-		texturesHuman[1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture3.png"));
+		texturesHuman[1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture5.png"));
 		System.out.println("TextureHuman1 loaded okay ");
 
-		texturesHuman[2] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture4.png"));
+		texturesHuman[2] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture6.png"));
 		System.out.println("TextureHuman2 loaded okay ");
+
+		texturesHuman[3] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture4.png"));
+		System.out.println("TextureHuman3 loaded okay ");
 
 
 
