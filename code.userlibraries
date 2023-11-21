@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="LWJGL">
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/lzma.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/lwjgl.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/jinput.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/lwjgl_test.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/lwjgl_util.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/slick-util.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/lwjgl-debug.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/asm-debug-all.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/trident-7.2.1.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/substance-7.2.1.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/laf-plugin-7.2.1.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/laf-widget-7.2.1.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/lwjgl_util_applet.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/AppleJavaExtensions.jar" />
+    <archive path="/Users/peylix/Documents/College/Stage-3/Semester-1/Computer-Graphics-COMP3033J/project-1/code/LWJGL/log4j-api-2.0-beta9.jar" />
+  </library>
+</eclipse-userlibraries>
+
