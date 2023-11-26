@@ -85,6 +85,8 @@ public class MainWindow {
 	static float dkgreen[] = { 0.0f, 0.5f, 0.0f, 1.0f, 1.0f };
 	static float pink[] = { 1.0f, 0.6f, 0.6f, 1.0f, 1.0f };
 
+
+
 	// static GLfloat light_position[] = {0.0, 100.0, 100.0, 0.0};
 
 	// support method to aid in converting a java float array into a Floatbuffer
@@ -417,7 +419,6 @@ public class MainWindow {
 
 		glPushMatrix();
 //		Human MyHuman = new Human();
-		Cyberman myCyberman = new Cyberman();
 		glTranslatef(285, 380, 0);
 		glScalef(90f, 90f, 90f);
 
@@ -429,10 +430,30 @@ public class MainWindow {
 		} else {
 
 			// bad animation version
-			glTranslatef(posn_x * 3.0f, 0.0f, posn_y * 3.0f);
+//			glTranslatef(posn_x * 3.0f, 0.0f, posn_y * 3.0f);
 		}
 
-		myCyberman.drawCyberman(delta, !BadAnimation, texturesHuman); // give a delta for the Human object ot be animated
+		cyberman.drawCyberman(delta, !BadAnimation); // give a delta for the Human object ot be animated
+
+		glPopMatrix();
+
+		glPushMatrix();
+//		Human MyHuman = new Human();
+		glTranslatef(885, 380, 0);
+		glScalef(90f, 90f, 90f);
+
+		if (!BadAnimation) {
+			// insert your animation code to correct the postion for the human rotating
+			glTranslatef(posn_x * 3.0f, 0.0f, posn_y * 3.0f);
+			// Rotate the Human object using the thetaDeg variable
+			glRotatef(-thetaDeg + 180, 0, 1, 0);
+		} else {
+
+			// bad animation version
+//			glTranslatef(posn_x * 3.0f, 0.0f, posn_y * 3.0f);
+		}
+
+		cyberman2.drawCyberman(delta, !BadAnimation); // give a delta for the Human object ot be animated
 
 		glPopMatrix();
 
@@ -473,6 +494,10 @@ public class MainWindow {
 	// An array for storing textures to make it easier to pass it to a Human object.
 	Texture[] texturesHuman = new Texture[20];
 
+	Cyberman cyberman;
+
+	Cyberman cyberman2;
+
 	/*
 	 * Any additional textures for your assignment should be written in here. Make a
 	 * new texture variable for each one so they can be loaded in at the beginning
@@ -496,6 +521,9 @@ public class MainWindow {
 
 		texturesHuman[3] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture4.png"));
 		System.out.println("TextureHuman3 loaded okay ");
+
+		 cyberman = new Cyberman(texturesHuman);
+		 cyberman2 = new Cyberman(texturesHuman);
 
 
 

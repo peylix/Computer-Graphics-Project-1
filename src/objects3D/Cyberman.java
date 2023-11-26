@@ -33,13 +33,15 @@ public class Cyberman {
     static float dkgreen[] = { 0.0f, 0.5f, 0.0f, 1.0f, 1.0f };
     static float pink[] = { 1.0f, 0.6f, 0.6f, 1.0f, 1.0f };
 
-    public Cyberman() {
+    Texture[] texturesCyberman;
 
+    public Cyberman(Texture[] texturesCyberman) {
+        this.texturesCyberman = texturesCyberman;
     }
 
     // Implement using notes in Animation lecture
-    public void drawCyberman(float delta, boolean GoodAnimation, Texture[] texturesCyberman) {
-        float theta = (float) (delta * 2 * Math.PI);
+    public void drawCyberman(float delta, boolean GoodAnimation) {
+        float theta = (float) (delta * 5 * Math.PI);
         float LimbRotation;
         if (GoodAnimation) {
             LimbRotation = (float) Math.cos(theta) * 45;
