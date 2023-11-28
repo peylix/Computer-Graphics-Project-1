@@ -13,6 +13,7 @@ import org.lwjgl.opengl.DisplayMode;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.util.glu.GLU.*;
 
+import org.lwjgl.util.glu.GLU;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
@@ -360,19 +361,32 @@ public class MainWindow {
 		float posn_x = (float) Math.cos(theta); // same as your circle code in your notes
 		float posn_y = (float) Math.sin(theta);
 
+
+		// set the camera
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		GLU.gluPerspective(45f, 1.5f, 2.8f, 20000);
+		glMatrixMode(GL_MODELVIEW);
+		GLU.gluLookAt(-950, 550, -2200, 1000, 800, -500, 0, 1, 0);
+
+		// draw the sky and the land
+		World world = new World(texturesWorld);
+		world.drawWorld();
+
+
 		/*
 		 * This code draws a grid to help you view the human models movement You may
 		 * change this code to move the grid around and change its starting angle as you
 		 * please
 		 */
-		if (DRAWGRID) {
-			glPushMatrix();
-			Grid MyGrid = new Grid();
-			glTranslatef(600, 400, 0);
-			glScalef(200f, 200f, 200f);
-			MyGrid.DrawGrid();
-			glPopMatrix();
-		}
+//		if (DRAWGRID) {
+//			glPushMatrix();
+//			Grid MyGrid = new Grid();
+//			glTranslatef(600, 400, 0);
+//			glScalef(200f, 200f, 200f);
+//			MyGrid.DrawGrid();
+//			glPopMatrix();
+//		}
 
 //		glPushMatrix();
 //		Cube MyCube = new Cube();
@@ -404,17 +418,19 @@ public class MainWindow {
 		glPopMatrix();
 
 
+
+
 //		glPushMatrix();
 //		TexCube MyTexCube = new TexCube();
 //		glColor3f(white[0], white[1], white[2]);
 
 
-		glPushMatrix();
-		Grid grid = new Grid();
-		glTranslatef(285, 210, 0);
-		glScalef(90f, 90f, 90f);
-		grid.DrawGrid();
-		glPopMatrix();
+//		glPushMatrix();
+//		Grid grid = new Grid();
+//		glTranslatef(285, 210, 0);
+//		glScalef(90f, 90f, 90f);
+//		grid.DrawGrid();
+//		glPopMatrix();
 
 
 		glPushMatrix();
@@ -493,6 +509,7 @@ public class MainWindow {
 	Texture textureCube;
 	// An array for storing textures to make it easier to pass it to a Human object.
 	Texture[] texturesHuman = new Texture[20];
+	Texture[] texturesWorld = new Texture[5];
 
 	Cyberman cyberman;
 
@@ -522,8 +539,18 @@ public class MainWindow {
 		texturesHuman[3] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture4.png"));
 		System.out.println("TextureHuman3 loaded okay ");
 
-		 cyberman = new Cyberman(texturesHuman);
-		 cyberman2 = new Cyberman(texturesHuman);
+
+		texturesWorld[0] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/textureLand.png"));
+		System.out.println("textureWorld0 loaded okay ");
+		texturesWorld[1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/burningSky1.png"));
+		System.out.println("textureWorld1 loaded okay ");
+		texturesWorld[2] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/burningSky2.png"));
+		System.out.println("textureWorld1 loaded okay ");
+		texturesWorld[3] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/Project_Texture_2023.png"));
+		System.out.println("textureWorld2 loaded okay ");
+
+		cyberman = new Cyberman(texturesHuman);
+		cyberman2 = new Cyberman(texturesHuman);
 
 
 
