@@ -388,14 +388,6 @@ public class MainWindow {
 //			glPopMatrix();
 //		}
 
-//		glPushMatrix();
-//		Cube MyCube = new Cube();
-//		glColor3f(pink[0], pink[1], pink[2]);
-//		glMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, Utils.ConvertForGL(pink));
-//		glTranslatef(300, 300, 0);
-//		glScalef(90f, 90f, 90f);
-//		MyCube.drawCube();
-//		glPopMatrix();
 
 		// Cube in the screen
 		glPushMatrix();
@@ -403,7 +395,8 @@ public class MainWindow {
 		glColor3f(white[0], white[1], white[2]);
 //		glMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, Utils.ConvertForGL(pink));
 		glTranslatef(300, 300, 0);
-		glScalef(90f, 90f, 90f);
+		glScalef(100f, 400f, 100f);
+
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 
@@ -524,7 +517,7 @@ public class MainWindow {
 		texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/earthspace.png"));
 		System.out.println("Texture loaded okay ");
 
-		textureCube = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture1.png"));
+		textureCube = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/cabinShell.png"));
 		System.out.println("TextureCube loaded okay ");
 
 		texturesHuman[0] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture2.png"));
@@ -540,14 +533,14 @@ public class MainWindow {
 		System.out.println("TextureHuman3 loaded okay ");
 
 
-		texturesWorld[0] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/textureLand.png"));
+		texturesWorld[0] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/cityLand.png"));
 		System.out.println("textureWorld0 loaded okay ");
 		texturesWorld[1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/burningSky1.png"));
 		System.out.println("textureWorld1 loaded okay ");
 		texturesWorld[2] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/burningSky2.png"));
-		System.out.println("textureWorld1 loaded okay ");
-		texturesWorld[3] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/Project_Texture_2023.png"));
 		System.out.println("textureWorld2 loaded okay ");
+		texturesWorld[3] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/Project_Texture_2023.png"));
+		System.out.println("textureWorld3 loaded okay ");
 
 		cyberman = new Cyberman(texturesHuman);
 		cyberman2 = new Cyberman(texturesHuman);

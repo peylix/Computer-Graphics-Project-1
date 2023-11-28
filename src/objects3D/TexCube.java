@@ -63,18 +63,8 @@ public class TexCube {
 			GL11.glVertex3f(vertices[faces[face][3]].x, vertices[faces[face][3]].y, vertices[faces[face][3]].z);
 
 
-
-
-
 		}
 		GL11.glEnd();
 	}
 
 }
-
-/*
- * 
- * 
- * }
- * 
- */
