@@ -41,7 +41,8 @@ public class Cyberman {
 
     // Implement using notes in Animation lecture
     public void drawCyberman(float delta, boolean GoodAnimation) {
-        float theta = (float) (delta * 5 * Math.PI);
+        // Increase the theta to speed up the frequency of the cyberman
+        float theta = (float) (delta * 16 * Math.PI);
         float LimbRotation;
         if (GoodAnimation) {
             LimbRotation = (float) Math.cos(theta) * 45;
@@ -51,7 +52,6 @@ public class Cyberman {
 
         Sphere sphere = new Sphere();
         Cylinder cylinder = new Cylinder();
-        Cube cube = new Cube();
         TexSphere texSphere = new TexSphere();
 
         glPushMatrix();
