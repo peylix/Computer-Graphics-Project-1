@@ -47,7 +47,7 @@ public class World {
         // Draw the project texture 2023
         GL11.glPushMatrix();
         TexCube texture2023 = new TexCube();
-        GL11.glTranslatef(2000,800,0);
+        GL11.glTranslatef(3000,1200,0);
         GL11.glScalef(8f, 1000f, 1000f);
         GL11.glRotatef(90.0f, 0.0f, 0.0f, 0.0f);
         Color.white.bind();

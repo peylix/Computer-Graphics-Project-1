@@ -86,6 +86,8 @@ public class MainWindow {
 	static float dkgreen[] = { 0.0f, 0.5f, 0.0f, 1.0f, 1.0f };
 	static float pink[] = { 1.0f, 0.6f, 0.6f, 1.0f, 1.0f };
 
+	float paceX = 0.0f;
+
 
 
 	// static GLfloat light_position[] = {0.0, 100.0, 100.0, 0.0};
@@ -268,10 +270,10 @@ public class MainWindow {
 		lightPos2.put(0f).put(1000f).put(0).put(-1000f).flip();
 
 		FloatBuffer lightPos3 = BufferUtils.createFloatBuffer(4);
-		lightPos3.put(-10000f).put(1000f).put(1000).put(0).flip();
+		lightPos3.put(-10000f).put(1000f).put(1000).put(500).flip();
 
 		FloatBuffer lightPos4 = BufferUtils.createFloatBuffer(4);
-		lightPos4.put(1000f).put(1000f).put(1000f).put(0).flip();
+		lightPos4.put(-10000f).put(10000f).put(10000f).put(10000).flip();
 
 		glLight(GL_LIGHT0, GL_POSITION, lightPos); // specify the
 													// position
@@ -432,10 +434,13 @@ public class MainWindow {
 		glScalef(90f, 90f, 90f);
 
 		if (!BadAnimation) {
+
+			paceX += 0.1f;
 			// insert your animation code to correct the postion for the human rotating
-			glTranslatef(posn_x * 3.0f, 0.0f, posn_y * 3.0f);
+			glTranslatef(paceX, 0.0f, posn_y * 3.0f);
 			// Rotate the Human object using the thetaDeg variable
 			glRotatef(-thetaDeg + 180, 0, 1, 0);
+//			glTranslatef(posn_x * 3.0f, 0.0f, posn_y * 3.0f);
 		} else {
 
 			// bad animation version
@@ -535,7 +540,7 @@ public class MainWindow {
 
 		texturesWorld[0] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/cityLand.png"));
 		System.out.println("textureWorld0 loaded okay ");
-		texturesWorld[1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/burningSky1.png"));
+		texturesWorld[1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/burningSky2.png"));
 		System.out.println("textureWorld1 loaded okay ");
 		texturesWorld[2] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/burningSky2.png"));
 		System.out.println("textureWorld2 loaded okay ");
