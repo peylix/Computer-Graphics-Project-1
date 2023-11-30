@@ -391,9 +391,9 @@ public class MainWindow {
 //		}
 
 
-		// Cube in the screen
+		// Hibernation Chambers of the two cybermen in the screen
 		glPushMatrix();
-		TexCube MyCube = new TexCube();
+		TexCube hibernationChamber = new TexCube();
 		glColor3f(white[0], white[1], white[2]);
 //		glMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, Utils.ConvertForGL(pink));
 		glTranslatef(300, 300, 0);
@@ -409,7 +409,27 @@ public class MainWindow {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glClearColor(0.8f, 0.8f, 0.8f, 0.0f);
 
-		MyCube.drawTexCube();
+		hibernationChamber.drawTexCube();
+		glPopMatrix();
+
+		glPushMatrix();
+		TexCube hibernationChamber2 = new TexCube();
+		glColor3f(white[0], white[1], white[2]);
+//		glMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, Utils.ConvertForGL(pink));
+		glTranslatef(300, 300, -700);
+		glScalef(100f, 400f, 100f);
+
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
+		// Bind the texture to the surface
+		Color.white.bind();
+		textureCube.bind();
+		glEnable(GL_TEXTURE_2D);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glClearColor(0.8f, 0.8f, 0.8f, 0.0f);
+
+		hibernationChamber2.drawTexCube();
 		glPopMatrix();
 
 
@@ -453,7 +473,7 @@ public class MainWindow {
 
 		glPushMatrix();
 //		Human MyHuman = new Human();
-		glTranslatef(885, 380, 0);
+		glTranslatef(285, 380, -700);
 		glScalef(90f, 90f, 90f);
 
 		if (!BadAnimation) {
