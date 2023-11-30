@@ -11,7 +11,6 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.util.glu.GLU.*;
 
 import org.lwjgl.util.glu.GLU;
 import org.newdawn.slick.Color;
@@ -31,7 +30,7 @@ public class MainWindow {
 
 	private boolean MouseOnepressed = true;
 	private boolean dragMode = false;
-	private boolean BadAnimation = true;
+	private boolean BadAnimation = false;
 	private boolean Earth = false;
 	/** position of pointer */
 	float x = 400, y = 300;
@@ -86,7 +85,16 @@ public class MainWindow {
 	static float dkgreen[] = { 0.0f, 0.5f, 0.0f, 1.0f, 1.0f };
 	static float pink[] = { 1.0f, 0.6f, 0.6f, 1.0f, 1.0f };
 
-	float paceX = 0.0f;
+	float paceX1 = 0.0f;
+	float paceY1 = 0.0f;
+	float paceZ1 = 0.0f;
+	float paceX2 = 0.0f;
+	float paceY2 = 0.0f;
+	float paceZ2 = 0.0f;
+	float currentAngle = 0.0f;
+	float staticX1 = 285;
+	float staticY1 = 380;
+	float staticZ1 = 0;
 
 
 
@@ -116,6 +124,8 @@ public class MainWindow {
 			renderGL();
 			Display.update();
 			Display.sync(120); // cap fps to 120fps
+			long passed = getTime() - StartTime;
+			System.out.println("Time passed: " + passed);
 		}
 
 		Display.destroy();
@@ -364,12 +374,47 @@ public class MainWindow {
 		float posn_y = (float) Math.sin(theta);
 
 
-		// set the camera
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		GLU.gluPerspective(45f, 1.5f, 2.8f, 20000);
-		glMatrixMode(GL_MODELVIEW);
-		GLU.gluLookAt(-950, 550, -2200, 1000, 800, -500, 0, 1, 0);
+
+		if (myDelta <= 3000 && myDelta > 0) {
+			// set the camera
+			glMatrixMode(GL_PROJECTION);
+			glLoadIdentity();
+			GLU.gluPerspective(45f, 1.5f, 2.8f, 20000);
+			glMatrixMode(GL_MODELVIEW);
+
+			GLU.gluLookAt(1050, 1350, -1200, 1000, 800, -500, 0, 1, 0);
+
+		} else if (myDelta <= 21000 && myDelta > 3000) {
+			// set the camera
+			glMatrixMode(GL_PROJECTION);
+			glLoadIdentity();
+			GLU.gluPerspective(45f, 1.5f, 2.8f, 20000);
+			glMatrixMode(GL_MODELVIEW);
+			GLU.gluLookAt(-950, 550, -2200, 1000, 800, -500, 0, 1, 0);
+		} else if (myDelta <= 31000 && myDelta > 21000) {
+			// set the camera
+			glMatrixMode(GL_PROJECTION);
+			glLoadIdentity();
+			GLU.gluPerspective(45f, 1.5f, 2.8f, 20000);
+			glMatrixMode(GL_MODELVIEW);
+			GLU.gluLookAt(-950, 550, -2200,1000, 800, -500, 0, 1, 0);
+		} else if (myDelta <= 46000 && myDelta > 31000) {
+			// set the camera
+			glMatrixMode(GL_PROJECTION);
+			glLoadIdentity();
+			GLU.gluPerspective(45f, 1.5f, 2.8f, 20000);
+			glMatrixMode(GL_MODELVIEW);
+			GLU.gluLookAt(850, 550, -3800,1000, 800, -500, 0, 1, 0);
+		} else {
+			// set the camera
+			// rediscover the cyberman
+			glMatrixMode(GL_PROJECTION);
+			glLoadIdentity();
+			GLU.gluPerspective(45f, 1.5f, 2.8f, 20000);
+			glMatrixMode(GL_MODELVIEW);
+			GLU.gluLookAt(550, 450, 2200, 1000, 800, -500, 0, 1, 0);
+		}
+
 
 		// draw the sky and the land
 		World world = new World(texturesWorld);
@@ -412,25 +457,47 @@ public class MainWindow {
 		hibernationChamber.drawTexCube();
 		glPopMatrix();
 
+		// doorway to BJUT
 		glPushMatrix();
-		TexCube hibernationChamber2 = new TexCube();
+		TexCube doorway = new TexCube();
 		glColor3f(white[0], white[1], white[2]);
 //		glMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, Utils.ConvertForGL(pink));
-		glTranslatef(300, 300, -700);
-		glScalef(100f, 400f, 100f);
+		glTranslatef(800, 600, -4500);
+		glScalef(500f, 500f, 8f);
+		glRotatef(90, 0, 0, 0);
 
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 
 		// Bind the texture to the surface
 		Color.white.bind();
-		textureCube.bind();
+		textureCube2.bind();
 		glEnable(GL_TEXTURE_2D);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glClearColor(0.8f, 0.8f, 0.8f, 0.0f);
 
-		hibernationChamber2.drawTexCube();
+		doorway.drawTexCube();
 		glPopMatrix();
+
+//		glPushMatrix();
+//		TexCube hibernationChamber2 = new TexCube();
+//		glColor3f(white[0], white[1], white[2]);
+////		glMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, Utils.ConvertForGL(pink));
+//		glTranslatef(300, 300, -700);
+//		glScalef(100f, 400f, 100f);
+//
+//
+//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+//
+//		// Bind the texture to the surface
+//		Color.white.bind();
+//		textureCube.bind();
+//		glEnable(GL_TEXTURE_2D);
+//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+//		glClearColor(0.8f, 0.8f, 0.8f, 0.0f);
+//
+//		hibernationChamber2.drawTexCube();
+//		glPopMatrix();
 
 
 
@@ -448,19 +515,88 @@ public class MainWindow {
 //		glPopMatrix();
 
 
+		// draw the shadow of the cyberman
 		glPushMatrix();
-//		Human MyHuman = new Human();
+		Shadow shadow = new Shadow();
+		glTranslatef(105, 240, 0);
+		glScalef(90f, 90f, 90f);
+		glRotatef(-90.0f, 0, 1, 0);
+		if (!BadAnimation) {
+			glTranslatef(paceX1, paceY1, paceZ1);
+
+		} else {
+
+			// bad animation version
+//			glTranslatef(posn_x * 3.0f, 0.0f, posn_y * 3.0f);
+		}
+
+		shadow.drawShadow(delta, !BadAnimation); // give a delta for the Human object ot be animated
+
+		glPopMatrix();
+
+		glPushMatrix();
 		glTranslatef(285, 380, 0);
 		glScalef(90f, 90f, 90f);
+		glRotatef(-90.0f, 0, 1, 0);
 
 		if (!BadAnimation) {
 
-			paceX += 0.1f;
-			// insert your animation code to correct the postion for the human rotating
-			glTranslatef(paceX, 0.0f, posn_y * 3.0f);
-			// Rotate the Human object using the thetaDeg variable
-			glRotatef(-thetaDeg + 180, 0, 1, 0);
+//			if (myDelta > 5000 && myDelta < 100000){
+//				glTranslatef(paceX1, 0.0f, -paceZ1);
+//			} else {
+				// insert your animation code to correct the postion for the human rotating
+//				glTranslatef(paceX1, 0.0f, posn_y * 3.0f);
+//				// Rotate the Human object using the thetaDeg variable
+//				glRotatef(-thetaDeg + 180, 0, 1, 0);
 //			glTranslatef(posn_x * 3.0f, 0.0f, posn_y * 3.0f);
+//			}
+
+			if (myDelta <= 3500 && myDelta > 0) {
+				paceZ1 -= 0.2f;
+
+				glTranslatef(paceX1, paceY1, paceZ1); // Move forward. Leave the hibernation chamber.
+				glRotatef(currentAngle, 0, 1, 0);
+
+			} else if (myDelta <= 7000 && myDelta > 3500) {
+				glTranslatef(paceX1, paceY1, paceZ1); // Stop for a while.
+				glRotatef(currentAngle, 0, 1, 0);
+			} else if (myDelta <= 12000 && myDelta > 7000) {
+				currentAngle = thetaDeg + 45;
+				glTranslatef(paceX1, paceY1, paceZ1); // Rotate to the left.
+				glRotatef(currentAngle, 0, 1, 0);
+
+			}
+			else if (myDelta <= 13000 && myDelta > 12000) {
+
+				paceX1 -= 0.2f;
+				glTranslatef(paceX1, paceY1, paceZ1); // Move for a distance.
+				glRotatef(currentAngle, 0, 1, 0);
+			} else if (myDelta <= 17500 && myDelta > 13000) {
+				currentAngle -= 1.5f;
+				glTranslatef(paceX1, paceY1, paceZ1); // Rotate to the right.
+				glRotatef(currentAngle, 0, 1, 0);
+			} else if (myDelta <= 21000 && myDelta > 17500) {
+				glTranslatef(paceX1, paceY1, paceZ1); // Stop for a while.
+				glRotatef(currentAngle, 0, 1, 0);
+			} else if (myDelta <= 25500 && myDelta > 21000){
+				currentAngle += 1.3f;
+				glTranslatef(paceX1, paceY1, paceZ1); // Rotate to the left.
+				glRotatef(currentAngle, 0, 1, 0);
+			} else {
+				paceX1 -= 0.1f;
+				glTranslatef(paceX1, paceY1, paceZ1); // Leave the scene.
+				glRotatef(currentAngle, 0, 1, 0);
+			}
+//			else {
+//				glPopMatrix();
+//				glPushMatrix();
+//				paceX1 = 3000;
+//				paceZ1 = 5000;
+//				glTranslatef(285, 380, 200);
+//				glRotatef(currentAngle, 0, 1, 0);
+//			}
+//			glRotatef(-thetaDeg + 180, 0, 1, 0);
+
 		} else {
 
 			// bad animation version
@@ -471,23 +607,50 @@ public class MainWindow {
 
 		glPopMatrix();
 
+
+
+
 		glPushMatrix();
-//		Human MyHuman = new Human();
-		glTranslatef(285, 380, -700);
+		glTranslatef(3385, 380, 200);
 		glScalef(90f, 90f, 90f);
+		glRotatef(90.0f, 0, 1, 0);
 
 		if (!BadAnimation) {
-			// insert your animation code to correct the postion for the human rotating
-			glTranslatef(posn_x * 3.0f, 0.0f, posn_y * 3.0f);
-			// Rotate the Human object using the thetaDeg variable
-			glRotatef(-thetaDeg + 180, 0, 1, 0);
+			if (myDelta <= 2900 && myDelta > 0) {
+
+			} else if (myDelta <= 7000 && myDelta > 2900) {
+				paceZ2 -= 0.2f;
+				glTranslatef(paceX2, paceY2, paceZ2);
+			} else if (myDelta <= 8000 && myDelta > 7000) {
+				human.setSpecialEffect();
+				glTranslatef(paceX2, paceY2, paceZ2);
+			} else if (myDelta <= 12000 && myDelta > 8000) {
+				human.forceTurnOffSpecialEffect();
+				paceZ2 = 0.0f;
+				glTranslatef(paceX2, paceY2, paceZ2);
+			} else if (myDelta <= 13000 && myDelta > 12000) {
+				paceX2 += 0.2f;
+				glTranslatef(paceX2, paceY2, paceZ2);
+			} else if (myDelta <= 15000 && myDelta > 13000) {
+
+			} else if (myDelta <= 20500 && myDelta > 15000) {
+				paceZ2 -= 0.2f;
+				glTranslatef(paceX2, paceY2, paceZ2);
+			} else if (myDelta <= 22000 && myDelta > 20500) {
+				human.setSpecialEffect();
+				glTranslatef(paceX2, paceY2, paceZ2);
+			} else {
+				human.forceTurnOffSpecialEffect();
+				paceZ2 = 0.0f;
+				glTranslatef(paceX2, paceY2, paceZ2);
+			}
 		} else {
 
 			// bad animation version
 //			glTranslatef(posn_x * 3.0f, 0.0f, posn_y * 3.0f);
 		}
 
-		cyberman2.drawCyberman(delta, !BadAnimation); // give a delta for the Human object ot be animated
+		human.drawHuman(delta, !BadAnimation); // give a delta for the Human object ot be animated
 
 		glPopMatrix();
 
@@ -525,13 +688,16 @@ public class MainWindow {
 
 	Texture texture;
 	Texture textureCube;
+	Texture textureCube2;
+
 	// An array for storing textures to make it easier to pass it to a Human object.
-	Texture[] texturesHuman = new Texture[20];
+	Texture[] texturesHumanoid = new Texture[20];
 	Texture[] texturesWorld = new Texture[5];
 
 	Cyberman cyberman;
+	Human human;
 
-	Cyberman cyberman2;
+//	Cyberman cyberman2;
 
 	/*
 	 * Any additional textures for your assignment should be written in here. Make a
@@ -544,18 +710,26 @@ public class MainWindow {
 
 		textureCube = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/cabinShell.png"));
 		System.out.println("TextureCube loaded okay ");
+		textureCube2 = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/bjut_picture.png"));
+		System.out.println("TextureCube2 loaded okay ");
 
-		texturesHuman[0] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture2.png"));
-		System.out.println("TextureHuman0 loaded okay ");
+		texturesHumanoid[0] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture2.png"));
+		System.out.println("Texture0 for the Cyberman loaded okay ");
 
-		texturesHuman[1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture5.png"));
-		System.out.println("TextureHuman1 loaded okay ");
+		texturesHumanoid[1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture5.png"));
+		System.out.println("Texture1 for the Cyberman loaded okay ");
 
-		texturesHuman[2] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture6.png"));
-		System.out.println("TextureHuman2 loaded okay ");
+		texturesHumanoid[2] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture6.png"));
+		System.out.println("Texture2 for the Cyberman loaded okay ");
 
-		texturesHuman[3] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture4.png"));
-		System.out.println("TextureHuman3 loaded okay ");
+		texturesHumanoid[3] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/texture4.png"));
+		System.out.println("Texture3 for the Cyberman loaded okay ");
+		texturesHumanoid[4] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/textureSkin.png"));
+		System.out.println("Texture0 for the Human loaded okay ");
+		texturesHumanoid[5] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/textureCloth1.png"));
+		System.out.println("Texture1 for the Human loaded okay ");
+		texturesHumanoid[6] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/textureCloth2.png"));
+		System.out.println("Texture2 for the Human loaded okay ");
 
 
 		texturesWorld[0] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/cityLand.png"));
@@ -567,8 +741,10 @@ public class MainWindow {
 		texturesWorld[3] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/Project_Texture_2023.png"));
 		System.out.println("textureWorld3 loaded okay ");
 
-		cyberman = new Cyberman(texturesHuman);
-		cyberman2 = new Cyberman(texturesHuman);
+		cyberman = new Cyberman(texturesHumanoid);
+//		cyberman2 = new Cyberman(texturesHumanoid);
+
+		human = new Human(texturesHumanoid);
 
 
 
