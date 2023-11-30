@@ -1,9 +1,8 @@
 package objects3D;
 
 import static org.lwjgl.opengl.GL11.*;
-import GraphicsObjects.Point4f;
+
 import GraphicsObjects.Utils;
-import GraphicsObjects.Vector4f;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.opengl.Texture;
 
@@ -33,13 +32,24 @@ public class Human {
 	static float dkgreen[] = { 0.0f, 0.5f, 0.0f, 1.0f, 1.0f };
 	static float pink[] = { 1.0f, 0.6f, 0.6f, 1.0f, 1.0f };
 
-	public Human() {
+	private boolean specialEffect = false;
 
+	Texture[] texturesHuman;
+	public Human(Texture[] texturesHuman) {
+		this.texturesHuman = texturesHuman;
+	}
+
+	public void setSpecialEffect() {
+		specialEffect = !specialEffect;
+	}
+
+	public void forceTurnOffSpecialEffect() {
+		specialEffect = false;
 	}
 
 	// Implement using notes in Animation lecture
-	public void drawHuman(float delta, boolean GoodAnimation, Texture[] texturesHuman) {
-		float theta = (float) (delta * 2 * Math.PI);
+	public void drawHuman(float delta, boolean GoodAnimation) {
+		float theta = (float) (delta * 9 * Math.PI);
 		float LimbRotation;
 		if (GoodAnimation) {
 			LimbRotation = (float) Math.cos(theta) * 45;
@@ -51,6 +61,15 @@ public class Human {
 		Cylinder cylinder = new Cylinder();
 		TexSphere texSphere = new TexSphere();
 
+
+		if (specialEffect) {
+			glColor3f(magenta[0], magenta[1], magenta[2]);
+			glTranslatef(0.0f, 0.5f, 0.0f);
+			glScalef(0.1f, 0.1f, 0.1f);
+			sphere.drawSphere(50.0f, 16, 16);
+
+		}
+
 		glPushMatrix();
 
 		{
@@ -61,11 +80,11 @@ public class Human {
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 			// Bind the texture to the surface
 			Color.white.bind();
-			texturesHuman[1].bind();
+			texturesHuman[6].bind();
 			glEnable(GL_TEXTURE_2D);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 			glClearColor(0.7f, 0.7f, 0.7f, 0.0f);
-			texSphere.DrawTexSphere(0.5f, 32, 32, texturesHuman[1]);
+			texSphere.DrawTexSphere(0.5f, 32, 32, texturesHuman[6]);
 
 //			glColor3f(yellow[0], yellow[1], yellow[2]);
 //			glMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, Utils.ConvertForGL(yellow));
@@ -82,11 +101,11 @@ public class Human {
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 				// Bind the texture to the surface
 				Color.white.bind();
-				texturesHuman[2].bind();
+				texturesHuman[5].bind();
 				glEnable(GL_TEXTURE_2D);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 				glClearColor(0.7f, 0.7f, 0.7f, 0.0f);
-				texSphere.DrawTexSphere(0.5f, 32, 32, texturesHuman[2]);
+				texSphere.DrawTexSphere(0.5f, 32, 32, texturesHuman[5]);
 
 
 				// neck
@@ -109,11 +128,11 @@ public class Human {
 						glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 						// Bind the texture to the surface
 						Color.white.bind();
-						texturesHuman[0].bind();
+						texturesHuman[4].bind();
 						glEnable(GL_TEXTURE_2D);
 						glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 						glClearColor(0.7f, 0.7f, 0.7f, 0.0f);
-						texSphere.DrawTexSphere(0.5f, 32, 32, texturesHuman[0]);
+						texSphere.DrawTexSphere(0.5f, 32, 32, texturesHuman[4]);
 
 						// Draw the nose of the human
 						glColor3f(red[0], red[1], red[2]);
@@ -201,16 +220,6 @@ public class Human {
 										glTranslatef(0.0f, 0.0f, 0.75f);
 										sphere.drawSphere(0.2f, 32, 32);
 
-										glColor3f(magenta[0], magenta[1], magenta[2]);
-										glMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, Utils.ConvertForGL(blue));
-										glPushMatrix();
-										{
-											glTranslatef(0.0f, 0.0f, 0.0f);
-											glRotatef(45.0f, 1.0f, 0.0f, 0.0f);
-											cylinder.drawCylinder(0.05f, 0.6f, 32);
-
-										}
-										glPopMatrix();
 
 									}
 									glPopMatrix();
@@ -270,16 +279,6 @@ public class Human {
 										glTranslatef(0.0f, 0.0f, 0.75f);
 										sphere.drawSphere(0.2f, 32, 32);
 
-										glColor3f(magenta[0], magenta[1], magenta[2]);
-										glMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, Utils.ConvertForGL(blue));
-										glPushMatrix();
-										{
-											glTranslatef(0.0f, 0.0f, 0.0f);
-											glRotatef(45.0f, 1.0f, 0.0f, 0.0f);
-											cylinder.drawCylinder(0.05f, 0.6f, 32);
-
-										}
-										glPopMatrix();
 
 									}
 									glPopMatrix();
@@ -460,10 +459,3 @@ public class Human {
 	}
 
 }
-
-/*
- * 
- * 
- * }
- * 
- */
