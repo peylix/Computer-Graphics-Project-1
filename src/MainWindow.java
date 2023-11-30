@@ -406,8 +406,6 @@ public class MainWindow {
 			glMatrixMode(GL_MODELVIEW);
 			GLU.gluLookAt(850, 550, -3800,1000, 800, -500, 0, 1, 0);
 		} else {
-			// set the camera
-			// rediscover the cyberman
 			glMatrixMode(GL_PROJECTION);
 			glLoadIdentity();
 			GLU.gluPerspective(45f, 1.5f, 2.8f, 20000);
