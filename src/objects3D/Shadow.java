@@ -42,7 +42,7 @@ public class Shadow {
             glMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, Utils.ConvertForGL(black));
             glTranslatef(0.0f, 0.5f, 0.0f);
             glScalef(1.0f, 1.0f, 1.0f);
-            sphere.drawSphere(0.1f, 32, 32);
+            sphere.drawSphere(0.5f, 32, 32);
 
 //			glColor3f(yellow[0], yellow[1], yellow[2]);
 //			glMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, Utils.ConvertForGL(yellow));
